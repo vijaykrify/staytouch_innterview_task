@@ -1,0 +1,39 @@
+<section class="tablepage">
+  <div class="container  mt-4">
+     <div class="rightalign mb-3 d-flex justify-content-between"><button class="btn btnClass"><a routerLink='/create' class="createClass">Create New Meeting</a></button> 
+        <button class="btn btnClass" (click)="logout();"><a>Logout</a></button>
+     </div>
+     <div class="card p-3">
+        <h4 class="meethead">Meeting List</h4>
+        <div class="table-responsive">
+           <table datatable [dtOptions]="dtOptions"  class="table table-striped table-borderless">
+              <thead>
+                 <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>meeting time</th>
+                    <th>Action</th>
+                 </tr>
+              </thead>
+              <tbody>
+                 <tr *ngFor="let meet of meets; let i =index">
+                    <td>{{meet.firstName}}</td>
+                    <td>{{meet.lastName}}</td>
+                    <td>{{meet.email}}</td>
+                    <td>{{meet.phone}}</td>
+                    <td>{{meet.address}}</td>
+                    <td>{{meet.meettime}}</td>
+                    <td class="d-flex justify-content-around">
+                       <button class="btn btn-primary btn-sm" (click)="editMeet(meet)">Edit</button>
+                       <button class="btn btn-danger btn-sm" (click)="deleteMeet(meet)">Delete</button></td>
+                 </tr>
+              </tbody>
+           </table>
+        </div>
+     </div>
+  </div>
+</section>
+<router-outlet></router-outlet>

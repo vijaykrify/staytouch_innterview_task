@@ -1,0 +1,85 @@
+<div class="container-fluid heightVh">
+    <div class="row justify-content-center align-items-center h-100">
+       <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="card p-3">
+             <h2 class="text-center editHead">Edit Meet</h2>
+             <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+             <div class="row">
+                <div class="col-md-6">
+                   <div class="form-group">
+                      <label for="firstName">First Name</label>
+                      <input type="text" formControlName="firstName"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                         <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-6">
+                   <div class="form-group">
+                      <label for="lastName">Last Name</label>
+                      <input type="text" formControlName="lastName" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                      <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                         <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-6">
+                   <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="text" formControlName="email" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                         <div *ngIf="f.email.errors.required">Email is required</div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-md-6">
+                   <label for="phone">Phone</label>
+                   <ngx-intl-tel-input
+                   [cssClass]="'form-control'"
+                   [preferredCountries]="[CountryISO.UnitedStates, CountryISO.UnitedKingdom]"
+                   [enableAutoCountrySelect]="true"
+                   [enablePlaceholder]="true"
+                   [searchCountryFlag]="true"
+                   [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                   [selectFirstCountry]="false"
+                   [phoneValidation]="false"
+                   [selectedCountryISO]="CountryISO.India"
+                   [maxLength]="15"
+                   name="phone"
+                   formControlName="phone"
+                   [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"></ngx-intl-tel-input>
+                   <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                      <div *ngIf="f.phone.errors.required">Phone is required</div>
+                   </div>
+                   <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                      <div *ngIf="f.phone.errors.pattern">Phone is invalid</div>
+                   </div>
+                </div>
+               
+                <div class="col-md-6">
+                   <div class="form-group">
+                      <label for="meeting">Meeting Time</label>
+                      <input type="datetime-local" formControlName="meettime" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.meettime.errors }" />
+                      <div *ngIf="submitted && f.meettime.errors" class="invalid-feedback">
+                         <div *ngIf="f.meettime.errors.required">Meeting Time is required</div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                     <label for="address">Address</label>
+                     <textarea type="text" formControlName="address" class="form-control"></textarea>
+                  </div>
+               </div>
+                <div class="form-group mt-2 text-center">
+                   <button [disabled]="loading" class="btn btn-primary">
+                      <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+                      Edit Meet
+                   </button>
+                </div>
+             </div>
+             </form>
+          </div>
+       </div>
+    </div>
+ </div>

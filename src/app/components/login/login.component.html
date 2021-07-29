@@ -1,0 +1,30 @@
+<section class="login h-100">
+  <div class="container h-100 d-flex flex-column justify-content-center">
+     <div class="row justify-content-center">
+        <div class="col col-sm-6 col-md-6 col-lg-6 col-xl-4">
+           <h4 class="text-center loginhead">Login</h4>
+           <div class="card p-3">
+              <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+              <div class="form-group">
+                 <label for="exampleInputEmail1">UserName</label>
+                 <input type="text" class="form-control" formControlName="username" placeholder="Enter Username">
+                 <small class="form-text" 
+                    *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.required">
+                 Please enter User Name.!
+                 </small>
+                 <!-- <small class="form-text"
+                    *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.email">
+                      Email address not well formed.!
+                    </small> -->
+              </div>
+              <div class="form-group">
+                 <label for="exampleInputPassword1">Password</label>
+                 <input type="password" class="form-control" formControlName="password" placeholder="Password">
+              </div>
+              <div class="text-center mt-3"> <button type="submit" class="btn btnClass" [disabled]="!loginForm.valid">Submit</button></div>
+              </form>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>
